@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Black Streaming — Teste grátis por 1 hora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#000; --bg2:#141414; --text:#F2F2F2; --muted:#A3A3A3;
+  --pink:#E6E6E6; --sun:#BDBDBD; --wa:#25D366; --line:#2E2E2E;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;font-size:1.05rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0}
+.logo{font-weight:800;font-size:1.4rem;letter-spacing:-.02em;text-decoration:none}
+.logo img{height:64px;width:auto;display:block}
+.btn{display:inline-flex;align-items:center;gap:.6rem;border:0;border-radius:999px;padding:.95rem 1.6rem;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#05260F}
+.btn-ghost{background:transparent;border:2px solid var(--line);color:var(--text)}
+.btn svg{width:1.3em;height:1.3em;fill:currentColor}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;padding:3rem 0 4.5rem}
+h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:0 0 1.2rem}
+.lead{color:var(--muted);max-width:46ch;margin:0 0 1.8rem}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem}
+
+.clock{background:var(--bg2);border:2px solid var(--line);border-radius:32px;padding:2rem 1.5rem;text-align:center}
+.clock .time{font-size:clamp(3.6rem,11vw,6rem);font-weight:800;letter-spacing:-.04em;color:var(--sun);font-variant-numeric:tabular-nums;line-height:1}
+.clock p{margin:.8rem 0 1.4rem;color:var(--muted);font-size:.95rem}
+.bar{height:10px;background:var(--bg);border-radius:99px;overflow:hidden;margin-bottom:1.4rem}
+.bar i{display:block;height:100%;width:100%;background:var(--pink);transition:width 1s linear}
+
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 2rem;max-width:20ch}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem}
+.features h3{margin:0 0 .4rem;font-size:1.2rem;color:var(--sun)}
+.features p{margin:0;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1.4rem;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:3.2rem 1fr;gap:1rem;align-items:start}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--pink);color:#0D0D0D;font-weight:800;font-size:1.3rem}
+.steps b{display:block;font-size:1.15rem}
+.steps span{color:var(--muted)}
+details{border-bottom:1px solid var(--line);padding:1rem 0}
+summary{cursor:pointer;font-weight:600;font-size:1.1rem}
+details p{color:var(--muted);margin:.7rem 0 0;max-width:60ch}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.6rem;padding:0}
+.chips svg{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chips li{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);background:var(--bg2);border-radius:999px;padding:.35rem .9rem;font-size:.95rem}
+.gallery{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1.2rem}
+.gallery figure{margin:0;background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:1rem;display:flex;flex-direction:column;justify-content:space-between;gap:.7rem}
+.gallery svg{width:100%;height:auto;display:block}
+.gallery figcaption{color:var(--muted);font-size:.95rem}
+@media(max-width:780px){.gallery{grid-template-columns:1fr}}
+.tvshow{max-width:860px;margin:0 auto}
+.tvshow svg{width:100%;height:auto;display:block}
+.final{text-align:center}
+.final h2{margin-inline:auto}
+.final .actions{justify-content:center}
+footer{padding:2rem 0 6rem;color:var(--muted);font-size:.9rem;text-align:center}
+
+.fab{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+@media(max-width:780px){.hero{grid-template-columns:1fr;padding-top:1.5rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#topo" aria-label="Black Streaming"><img src="data:image/webp;base64,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" alt="Black Streaming" width="520" height="235"></a>
+    <a class="btn btn-ghost" href="#faq">Dúvidas</a>
+  </header>
+
+  <main id="topo">
+    <div class="hero">
+      <div>
+        <h1>Teste nosso app de entretenimento por 1 hora. De graça.</h1>
+        <p class="lead">Você usa tudo, sente se vale a pena e só fecha com a gente se gostar. Sem cartão e sem compromisso.</p>
+        <ul class="chips" aria-label="Aparelhos compatíveis"><li><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='2' y='4' width='20' height='13' rx='2'/><path d='M8 21h8M12 17v4'/></svg>Smart TV</li><li><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M8.5 6.5a5 5 0 0 1 7 0'/><rect x='3' y='10' width='18' height='8' rx='2'/><path d='M7 14h4'/><circle cx='17' cy='14' r='.8'/></svg>Aparelho box</li><li><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='7' y='2' width='10' height='20' rx='2'/><path d='M11 18.5h2'/></svg>Celular</li></ul>
+        <div class="actions">
+          <a class="btn btn-wa js-wa" href="#" data-msg="Olá! Quero liberar o teste grátis de 1 hora do app.">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-3.900-4.700-4.100-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.200c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.2.1.4 0 .5l-.4.600c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.100.4.100.6-.1l.8-1c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.100.1.700-.1 1.300z"/></svg>
+            Falar com a equipe no WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#como">Como funciona</a>
+        </div>
+      </div>
+      <div class="clock" aria-live="polite">
+        <div class="time" id="time">60:00</div>
+        <p id="hint">Esse é o tempo do seu teste. Toque para ver como ele corre.</p>
+        <div class="bar"><i id="bar"></i></div>
+        <button class="btn btn-ghost" id="sim" type="button">Simular o teste</button>
+      </div>
+    </div>
+
+    <section>
+      <h2>Tudo para o seu tempo livre, em um só app</h2>
+      <div class="features">
+        <div><h3>Entretenimento sob demanda</h3><p>Abra e comece a assistir, ouvir ou jogar em segundos, no celular, na TV ou no computador.</p></div>
+        <div><h3>Uma conta, vários aparelhos</h3><p>Use na Smart TV, no aparelho box ou no celular e continue de onde parou.</p></div>
+        <div><h3>Suporte de gente de verdade</h3><p>Dúvida na instalação ou no uso? Nossa equipe responde direto no WhatsApp.</p></div>
+      </div>
+    </section>
+
+    <section id="catalogo">
+      <h2>Sua TV cheia de opções para escolher</h2>
+      <div class="tvshow">
+        <svg viewBox='0 -50 800 520' role='img' aria-label='TV exibindo uma parede de filmes'>
+          <line x1='400' y1='20' x2='335' y2='-38' stroke='#cfcfcf' stroke-width='6' stroke-linecap='round'/>
+          <line x1='400' y1='20' x2='465' y2='-38' stroke='#cfcfcf' stroke-width='6' stroke-linecap='round'/>
+          <circle cx='335' cy='-38' r='8' fill='#e6e6e6'/><circle cx='465' cy='-38' r='8' fill='#e6e6e6'/>
+          <rect x='60' y='20' width='680' height='380' rx='26' fill='#111' stroke='#7a7a7a' stroke-width='6'/>
+          <rect x='82' y='42' width='636' height='336' rx='10' fill='#050505'/>
+          <g id='posters'></g>
+          <polygon points='82,42 330,42 220,378 82,378' fill='#fff' opacity='.05'/>
+          <circle cx='400' cy='210' r='46' fill='#000' opacity='.7' stroke='#fff' stroke-width='4'/>
+          <polygon points='387,186 387,234 427,210' fill='#fff'/>
+          <rect x='340' y='400' width='120' height='10' fill='#555'/>
+          <rect x='290' y='410' width='220' height='8' rx='4' fill='#444'/>
+        </svg>
+      </div>
+    </section>
+
+    <section id="telas">
+      <h2>Para assistir em família, em qualquer tela</h2>
+      <div class="gallery">
+        <figure>
+          <svg viewBox='0 0 480 300' role='img' aria-label='Família no sofá assistindo TV'>
+            <defs><radialGradient id='glow' cx='50%' cy='50%' r='70%'><stop offset='0' stop-color='#ffffff'/><stop offset='1' stop-color='#7d7d7d'/></radialGradient></defs>
+            <rect width='480' height='300' rx='20' fill='#0c0c0c'/>
+            <ellipse cx='240' cy='110' rx='210' ry='100' fill='#ffffff' opacity='.05'/>
+            <rect x='110' y='28' width='260' height='140' rx='10' fill='#1c1c1c' stroke='#6b6b6b' stroke-width='4'/>
+            <rect x='122' y='40' width='236' height='116' rx='4' fill='url(#glow)'/>
+            <polygon points='228,78 228,118 264,98' fill='#111' opacity='.75'/>
+            <rect x='215' y='168' width='50' height='8' fill='#555'/>
+            <rect x='185' y='176' width='110' height='6' rx='3' fill='#444'/>
+            <rect x='70' y='196' width='340' height='74' rx='28' fill='#2a2a2a'/>
+            <circle cx='150' cy='212' r='17' fill='#8a8a8a'/><rect x='128' y='228' width='44' height='40' rx='15' fill='#6e6e6e'/>
+            <circle cx='330' cy='212' r='17' fill='#a3a3a3'/><rect x='308' y='228' width='44' height='40' rx='15' fill='#7f7f7f'/>
+            <circle cx='214' cy='226' r='13' fill='#c4c4c4'/><rect x='200' y='240' width='28' height='28' rx='10' fill='#9a9a9a'/>
+            <circle cx='266' cy='226' r='13' fill='#b0b0b0'/><rect x='252' y='240' width='28' height='28' rx='10' fill='#888'/>
+            <rect x='60' y='254' width='360' height='34' rx='14' fill='#3a3a3a'/>
+            <rect x='46' y='222' width='36' height='64' rx='15' fill='#333'/><rect x='398' y='222' width='36' height='64' rx='15' fill='#333'/>
+          </svg>
+          <figcaption>Sala de estar, sofá cheio e todo mundo no mesmo programa.</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox='0 0 200 220' role='img' aria-label='Televisão com antena'>
+            <line x1='100' y1='60' x2='62' y2='18' stroke='#cfcfcf' stroke-width='5' stroke-linecap='round'/>
+            <line x1='100' y1='60' x2='138' y2='18' stroke='#cfcfcf' stroke-width='5' stroke-linecap='round'/>
+            <circle cx='62' cy='18' r='7' fill='#e6e6e6'/><circle cx='138' cy='18' r='7' fill='#e6e6e6'/>
+            <rect x='24' y='58' width='152' height='114' rx='18' fill='#1c1c1c' stroke='#bdbdbd' stroke-width='5'/>
+            <rect x='38' y='72' width='104' height='86' rx='9' fill='url(#glow)'/>
+            <polygon points='78,98 78,132 108,115' fill='#111' opacity='.75'/>
+            <circle cx='159' cy='96' r='6' fill='#bdbdbd'/><circle cx='159' cy='122' r='6' fill='#8c8c8c'/>
+            <line x1='56' y1='174' x2='46' y2='198' stroke='#bdbdbd' stroke-width='5' stroke-linecap='round'/>
+            <line x1='144' y1='174' x2='154' y2='198' stroke='#bdbdbd' stroke-width='5' stroke-linecap='round'/>
+          </svg>
+          <figcaption>Na Smart TV ou no aparelho box ligado à sua TV.</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox='0 0 260 220' role='img' aria-label='Tablet e celular reproduzindo vídeo'>
+            <rect x='14' y='50' width='160' height='116' rx='14' fill='#1c1c1c' stroke='#bdbdbd' stroke-width='5'/>
+            <rect x='26' y='62' width='136' height='92' rx='6' fill='url(#glow)'/>
+            <polygon points='84,84 84,130 120,107' fill='#111' opacity='.75'/>
+            <rect x='190' y='78' width='58' height='104' rx='12' fill='#1c1c1c' stroke='#bdbdbd' stroke-width='5'/>
+            <rect x='199' y='92' width='40' height='72' rx='4' fill='url(#glow)'/>
+            <polygon points='212,116 212,140 230,128' fill='#111' opacity='.75'/>
+          </svg>
+          <figcaption>No celular, onde você estiver.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="como">
+      <h2>Do teste ao fechamento em 3 passos</h2>
+      <ol class="steps">
+        <li><div><b>Chame a equipe no WhatsApp</b><span>Toque no botão verde e envie a mensagem pronta.</span></div></li>
+        <li><div><b>Receba o acesso de teste</b><span>Liberamos o app para você usar por 1 hora, sem custo.</span></div></li>
+        <li><div><b>Gostou? Fecha com a gente</b><span>Antes de acabar a hora, escolhemos o plano ideal juntos.</span></div></li>
+      </ol>
+    </section>
+
+    <section id="faq">
+      <h2>Perguntas frequentes</h2>
+      <details><summary>O teste de 1 hora é realmente grátis?</summary><p>Sim. Você testa o app por 1 hora sem pagar nada e sem informar cartão.</p></details>
+      <details><summary>Quando a hora começa a contar?</summary><p>A contagem começa quando a equipe libera seu acesso, e a gente avisa você no WhatsApp.</p></details>
+      <details><summary>Preciso fechar o plano depois do teste?</summary><p>Não. Se não gostar, é só encerrar. Se gostar, a equipe apresenta os planos na hora.</p></details>
+      <details><summary>Em quais aparelhos posso usar?</summary><p>Funciona em Smart TV, aparelho box e celular. A equipe ajuda na instalação no aparelho que você tiver.</p></details>
+    </section>
+
+    <section class="final">
+      <h2>Sua hora grátis está esperando</h2>
+      <div class="actions">
+        <a class="btn btn-wa js-wa" href="#" data-msg="Olá! Quero liberar o teste grátis de 1 hora do app.">Pedir meu teste agora</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="ano"></span> Black Streaming. Todos os direitos reservados.</footer>
+</div>
+
+<a class="btn btn-wa fab js-wa" href="#" data-msg="Olá! Vim pelo site e quero falar com a equipe." aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.300-.7-2.800-1.100-4.600-3.900-4.700-4.100-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.200c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.2.1.4 0 .5l-.4.600c-.1.2-.3.3-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.100.4.100.6-.1l.8-1c.2-.3.4-.2.6-.1l1.900.9c.3.100.5.200.5.300.1.100.1.700-.1 1.300z"/></svg>
+  WhatsApp
+</a>
+
+<script>
+// TROQUE pelo número da empresa: código do país + DDD + número, só dígitos.
+var WHATSAPP_NUMBER = "5511994232060";
+
+document.querySelectorAll(".js-wa").forEach(function (a) {
+  a.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(a.dataset.msg);
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+(function () {
+  var g = document.getElementById('posters'); if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  function el(t, a, p) { var e = document.createElementNS(ns, t); for (var k in a) e.setAttribute(k, a[k]); (p || g).appendChild(e); return e; }
+  function grad(id, stops, x2, y2) {
+    var d = el('linearGradient', { id: id, x1: 0, y1: 0, x2: x2, y2: y2 });
+    stops.forEach(function (s) { el('stop', { offset: s[0], 'stop-color': s[1], 'stop-opacity': s[2] === undefined ? 1 : s[2] }, d); });
+  }
+  grad('vg', [[0, '#000', 0], [1, '#000', .85]], 0, 1);
+  for (var i = 0; i < 12; i++) {
+    var x = 88 + (i % 6) * 106, y = 54 + Math.floor(i / 6) * 162, l = 22 + (i * 29) % 26;
+    var tone = 'hsl(215,6%,', light = tone + (l + 45) + '%)';
+    grad('pg' + i, [[0, tone + (l + 16) + '%)'], [1, tone + (l - 10) + '%)']], i % 2 ? 1 : 0, 1);
+    el('rect', { x: x, y: y, width: 94, height: 150, rx: 6, fill: 'url(#pg' + i + ')' });
+    switch (i) {
+      case 0: el('circle', { cx: x + 47, cy: y + 62, r: 24, fill: light }); el('rect', { x: x + 8, y: y + 88, width: 78, height: 3, fill: light, opacity: .6 }); break;
+      case 1: el('polygon', { points: x + ',' + (y + 110) + ' ' + (x + 30) + ',' + (y + 55) + ' ' + (x + 52) + ',' + (y + 88) + ' ' + (x + 68) + ',' + (y + 66) + ' ' + (x + 94) + ',' + (y + 110), fill: light }); break;
+      case 2: for (var j = 0; j < 7; j++) { var h = 30 + (j * 37) % 50; el('rect', { x: x + 4 + j * 13, y: y + 110 - h, width: 10, height: h, fill: light, opacity: .85 }); } break;
+      case 3: el('polygon', { points: (x + 8) + ',' + (y + 110) + ' ' + (x + 44) + ',' + (y + 14) + ' ' + (x + 64) + ',' + (y + 14) + ' ' + (x + 28) + ',' + (y + 110), fill: light, opacity: .9 }); break;
+      case 4: el('circle', { cx: x + 47, cy: y + 48, r: 14, fill: light }); el('ellipse', { cx: x + 47, cy: y + 98, rx: 30, ry: 24, fill: light }); break;
+      case 5: [36, 24, 12].forEach(function (r) { el('circle', { cx: x + 47, cy: y + 62, r: r, fill: 'none', stroke: light, 'stroke-width': 4 }); }); break;
+      case 6: for (var j = 0; j < 6; j++) el('rect', { x: x + 8 + j * 14, y: y + 10, width: 8, height: 100, fill: light, opacity: .3 + .12 * j }); break;
+      case 7: var pts = []; for (var k = 0; k < 10; k++) { var a = Math.PI * k / 5 - Math.PI / 2, r = k % 2 ? 12 : 30; pts.push((x + 47 + r * Math.cos(a)).toFixed(1) + ',' + (y + 60 + r * Math.sin(a)).toFixed(1)); } el('polygon', { points: pts.join(' '), fill: light }); break;
+      case 8: for (var j = 0; j < 4; j++) el('path', { d: 'M' + x + ' ' + (y + 50 + j * 16) + ' q23 -14 47 0 t47 0', fill: 'none', stroke: light, 'stroke-width': 3 }); break;
+      case 9: el('rect', { x: x + 30, y: y + 28, width: 34, height: 84, rx: 17, fill: light }); el('rect', { x: x + 38, y: y + 38, width: 18, height: 64, rx: 9, fill: tone + (l - 8) + '%)' }); break;
+      case 10: for (var r2 = 0; r2 < 5; r2++) for (var c = 0; c < 5; c++) el('circle', { cx: x + 14 + c * 16, cy: y + 24 + r2 * 16, r: 3, fill: light, opacity: .4 + .1 * ((r2 + c) % 4) }); break;
+      case 11: el('polygon', { points: (x + 47) + ',' + (y + 8) + ' ' + (x + 10) + ',' + (y + 112) + ' ' + (x + 84) + ',' + (y + 112), fill: light, opacity: .5 }); el('ellipse', { cx: x + 47, cy: y + 112, rx: 37, ry: 7, fill: light }); break;
+    }
+    el('rect', { x: x, y: y + 60, width: 94, height: 90, rx: 6, fill: 'url(#vg)' });
+    var w = 36 + (i * 13) % 34;
+    el('rect', { x: x + (94 - w) / 2, y: y + 118, width: w, height: 8, rx: 2, fill: '#fff', opacity: .85 });
+    el('rect', { x: x + (94 - w * .6) / 2, y: y + 132, width: w * .6, height: 4, rx: 2, fill: '#fff', opacity: .4 });
+    el('rect', { x: x, y: y, width: 94, height: 150, rx: 6, fill: 'none', stroke: '#fff', 'stroke-opacity': .14 });
+  }
+})();
+
+var total = 3600, left = total, timer = null;
+var timeEl = document.getElementById("time"), bar = document.getElementById("bar");
+var hint = document.getElementById("hint"), sim = document.getElementById("sim");
+function fmt(s){ var m = Math.floor(s / 60), r = s % 60; return String(m).padStart(2,"0") + ":" + String(r).padStart(2,"0"); }
+function paint(){ timeEl.textContent = fmt(left); bar.style.width = (left / total * 100) + "%"; }
+sim.addEventListener("click", function () {
+  if (timer) { clearInterval(timer); timer = null; left = total; paint(); sim.textContent = "Simular o teste"; hint.textContent = "Esse é o tempo do seu teste. Toque para ver como ele corre."; return; }
+  sim.textContent = "Parar simulação";
+  hint.textContent = "Simulação acelerada. No teste real, a hora corre normalmente.";
+  timer = setInterval(function () {
+    left -= 30;
+    if (left <= 0) { left = 0; clearInterval(timer); timer = null; hint.textContent = "Acabou a hora. Chame a equipe e escolha seu plano!"; sim.textContent = "Reiniciar"; }
+    paint();
+  }, 1000);
+});
+paint();
+</script>
+</body>
+</html>
